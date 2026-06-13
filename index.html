@@ -1,0 +1,233 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Galatea 风格的 AI 图像生成网站，支持文字生图、风格预设、作品展示和会员方案。" />
+    <title>NovaMuse AI - AI 生图创作平台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="NovaMuse AI 首页">
+        <span class="brand-mark">N</span>
+        <span>NovaMuse AI</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#generator">AI 生成</a>
+        <a href="#gallery">灵感广场</a>
+        <a href="#features">功能</a>
+        <a href="#pricing">价格</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="ghost-btn">登录</button>
+        <button class="primary-btn small">免费开始</button>
+      </div>
+      <button class="menu-btn" aria-label="打开菜单">☰</button>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span>AI Image Studio · 秒级出图</div>
+          <h1>把一句灵感变成高质感 AI 视觉大片</h1>
+          <p>
+            输入中文提示词，选择风格和比例，即可生成海报、头像、产品图、二次元角色、写实摄影等多种视觉内容。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#generator">立即生成图片</a>
+            <a class="secondary-btn" href="#gallery">查看作品案例</a>
+          </div>
+          <div class="stats-grid" aria-label="平台数据">
+            <div><strong>2.8M+</strong><span>累计生成</span></div>
+            <div><strong>40+</strong><span>风格模型</span></div>
+            <div><strong>4K</strong><span>高清导出</span></div>
+          </div>
+        </div>
+
+        <div class="hero-showcase" aria-label="AI 生成示例">
+          <div class="floating-card prompt-card">
+            <span>Prompt</span>
+            <p>未来城市中的东方女战士，霓虹灯，电影级光影，超精细细节</p>
+          </div>
+          <div class="art-stack">
+            <img class="art-card art-main" src="https://images.unsplash.com/photo-1635322966219-b75ed372eb01?auto=format&fit=crop&w=900&q=80" alt="霓虹科幻风 AI 角色图" />
+            <img class="art-card art-side one" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="抽象流体彩色艺术" />
+            <img class="art-card art-side two" src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?auto=format&fit=crop&w=600&q=80" alt="梦幻自然风景" />
+          </div>
+          <div class="floating-card render-card">
+            <span>生成完成</span>
+            <strong>8.4s</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="generator" class="generator section-shell">
+        <div class="section-heading center">
+          <span>AI Generator</span>
+          <h2>文字生图工作台</h2>
+          <p>模拟真实生图流程：提示词、风格、比例、质量和数量都可配置。</p>
+        </div>
+        <div class="generator-panel">
+          <div class="form-card">
+            <label for="promptInput">描述你的画面</label>
+            <textarea id="promptInput" rows="6">一只穿着宇航服的白猫坐在月球上，背后是蓝色地球，电影级灯光，超清细节</textarea>
+
+            <div class="control-grid">
+              <div>
+                <label for="styleSelect">风格</label>
+                <select id="styleSelect">
+                  <option value="cinematic">电影写实</option>
+                  <option value="anime">二次元插画</option>
+                  <option value="product">商业产品图</option>
+                  <option value="fantasy">奇幻概念</option>
+                </select>
+              </div>
+              <div>
+                <label for="ratioSelect">比例</label>
+                <select id="ratioSelect">
+                  <option>1:1</option>
+                  <option>3:4</option>
+                  <option>9:16</option>
+                  <option>16:9</option>
+                </select>
+              </div>
+              <div>
+                <label for="qualitySelect">质量</label>
+                <select id="qualitySelect">
+                  <option>标准</option>
+                  <option>高清</option>
+                  <option>超清 4K</option>
+                </select>
+              </div>
+              <div>
+                <label for="countSelect">数量</label>
+                <select id="countSelect">
+                  <option>1 张</option>
+                  <option>2 张</option>
+                  <option>4 张</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="chips" aria-label="提示词快捷标签">
+              <button data-chip="赛博朋克，紫蓝霓虹">赛博朋克</button>
+              <button data-chip="商业海报，干净背景">商业海报</button>
+              <button data-chip="水彩插画，柔和色彩">水彩插画</button>
+              <button data-chip="电影镜头，浅景深">电影镜头</button>
+            </div>
+            <button id="generateBtn" class="primary-btn full">生成图片</button>
+          </div>
+
+          <div class="preview-card">
+            <div class="preview-toolbar">
+              <span id="statusText">预览结果</span>
+              <span class="credit-pill">剩余 20 credits</span>
+            </div>
+            <div id="previewGrid" class="preview-grid">
+              <article class="result-card">
+                <img src="https://images.unsplash.com/photo-1633174524827-db00a6b7bc74?auto=format&fit=crop&w=700&q=80" alt="AI 生成预览" />
+                <button>下载</button>
+              </article>
+              <article class="result-card">
+                <img src="https://images.unsplash.com/photo-1655635949212-1d8f4f103ea1?auto=format&fit=crop&w=700&q=80" alt="AI 生成预览" />
+                <button>放大</button>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery section-shell">
+        <div class="section-heading">
+          <span>Explore</span>
+          <h2>热门灵感与风格模板</h2>
+          <p>从高点击模板开始，快速生成头像、广告、角色和社媒素材。</p>
+        </div>
+        <div class="masonry-grid">
+          <article><img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?auto=format&fit=crop&w=600&q=80" alt="星球科幻图" /><b>星际旅行海报</b></article>
+          <article class="tall"><img src="https://images.unsplash.com/photo-1604076913837-52ab5629fba9?auto=format&fit=crop&w=600&q=80" alt="彩色烟雾艺术" /><b>梦幻烟雾头像</b></article>
+          <article><img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80" alt="抽象渐变" /><b>流体渐变背景</b></article>
+          <article class="tall"><img src="https://images.unsplash.com/photo-1608501078713-8e445a709b39?auto=format&fit=crop&w=600&q=80" alt="机器人角色" /><b>未来机器人角色</b></article>
+          <article><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="自然风景" /><b>自然摄影大片</b></article>
+          <article><img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?auto=format&fit=crop&w=600&q=80" alt="城市夜景" /><b>城市霓虹街拍</b></article>
+        </div>
+      </section>
+
+      <section id="features" class="features section-shell">
+        <div class="section-heading center">
+          <span>Features</span>
+          <h2>从灵感到商用素材，一站完成</h2>
+        </div>
+        <div class="feature-grid">
+          <article><span>01</span><h3>中文提示词优化</h3><p>自动补全摄影、构图、材质、光影关键词，让新手也能稳定出图。</p></article>
+          <article><span>02</span><h3>多模型风格库</h3><p>写实、动漫、LOGO、产品图、3D、建筑室内等场景一键切换。</p></article>
+          <article><span>03</span><h3>高清放大与修复</h3><p>支持细节增强、面部修复、背景扩展和透明背景导出。</p></article>
+          <article><span>04</span><h3>私密创作空间</h3><p>会员作品默认私密，可管理历史记录、收藏和团队素材库。</p></article>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing section-shell">
+        <div class="section-heading center">
+          <span>Pricing</span>
+          <h2>选择适合你的创作额度</h2>
+          <p>可作为真实商业站点的价格区块，后续可接入支付和用户系统。</p>
+        </div>
+        <div class="price-grid">
+          <article class="price-card">
+            <h3>免费版</h3><p class="price">¥0<span>/月</span></p>
+            <ul><li>每日 10 credits</li><li>基础模型</li><li>社区公开作品</li></ul>
+            <button class="secondary-btn full">开始体验</button>
+          </article>
+          <article class="price-card featured">
+            <div class="badge">最受欢迎</div>
+            <h3>创作者</h3><p class="price">¥49<span>/月</span></p>
+            <ul><li>每月 1200 credits</li><li>高清放大</li><li>私密作品</li><li>商用授权</li></ul>
+            <button class="primary-btn full">升级会员</button>
+          </article>
+          <article class="price-card">
+            <h3>团队版</h3><p class="price">¥199<span>/月</span></p>
+            <ul><li>每月 6000 credits</li><li>团队空间</li><li>批量生成</li><li>优先队列</li></ul>
+            <button class="secondary-btn full">联系销售</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="testimonials section-shell">
+        <div class="section-heading center">
+          <span>Reviews</span>
+          <h2>适合设计师、运营和内容团队</h2>
+        </div>
+        <div class="review-grid">
+          <blockquote>“活动海报从 2 小时缩短到 10 分钟，风格一致性很好。”<cite>— 电商运营</cite></blockquote>
+          <blockquote>“中文提示词很友好，能快速探索角色设定和场景氛围。”<cite>— 游戏美术</cite></blockquote>
+          <blockquote>“批量生成产品背景图，让社媒素材产能直接翻倍。”<cite>— 品牌设计师</cite></blockquote>
+        </div>
+      </section>
+
+      <section id="faq" class="faq section-shell">
+        <div class="section-heading center">
+          <span>FAQ</span>
+          <h2>常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details open><summary>生成的图片可以商用吗？</summary><p>示例站点中会员方案包含商用授权，实际上线时建议补充完整服务条款。</p></details>
+          <details><summary>是否支持中文提示词？</summary><p>支持。页面已按中文用户习惯设计，也可以后续接入提示词优化接口。</p></details>
+          <details><summary>现在能真正调用 AI 生成吗？</summary><p>当前是前端演示版，点击生成会模拟生成结果。后续可接入 OpenAI Images API 或其他图片模型。</p></details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div><b>NovaMuse AI</b><p>灵感、生成、放大、管理，一站式 AI 图像平台。</p></div>
+      <div class="footer-links"><a href="#generator">开始生成</a><a href="#pricing">价格</a><a href="#faq">帮助</a></div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
